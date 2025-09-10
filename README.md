@@ -1,3 +1,4 @@
+![](Intro_image.jpg)
 # 📊 General Ledger Financial Analysis
 
 ## 📌 Project Overview  
@@ -24,14 +25,14 @@ The goal was to replicate real-world financial reporting by building:
 1. **Trial Balance – Are Debits and Credits balanced?**  
    - Used =SUM(Debit) – SUM(Credit) check, reviwed using pivotTable drill-down. 
    - Found imbalance: -763,041.46 (base currency) and -816,590.15 USD (after conversion).
-   - ``=SUM(Debit) - SUM(Credit) 
+   - ``=SUM(Debit) - SUM(Credit)``
 
 2. **P&L Statement – What is Net Profit by month/year?**  
    - Built with SUMIFS for Revenue, COGS, and Expenses.  
    - Net Profit = Revenue – Expenses.
    - Gross Profit = Total Revenue - COGS
    - NetProfitUSD ```=(SUMIFS(H:H,B:B,"Online Sales")+SUMIFS(H:H,B:B,"Sales Revenue"))
--(SUMIFS(H:H,B:B,"COGS")+SUMIFS(H:H,B:B,"Travel Expense")+SUMIFS(H:H,B:B,"Payroll Expense"))
+-(SUMIFS(H:H,B:B,"COGS")+SUMIFS(H:H,B:B,"Travel Expense")+SUMIFS(H:H,B:B,"Payroll Expense"))```
 
 3. **Department Analysis – Which department incurs the highest expenses?**  
    - PivotTable grouped by Department.  
@@ -39,12 +40,15 @@ The goal was to replicate real-world financial reporting by building:
 
 4. **Multi-Currency – How do exchange rate fluctuations affect reporting?**  
    - Created an Exchange Rate table in Excel.  
-   - Added NetAmountUSD column via Power Query merge.  
+   - Added NetAmountUSD column via Power Query merge.
+   - Used INDEX MATCH to verify ``=INDEX(ExchangeRate[Rate2USD], MATCH(GL!L:L,ExchangeRate[Currency], 0))``  
    - Compared results with and without conversion.  
 
 5. **Revenue/Expense Trend – How has Sales Revenue grown across months/years?**  
    - PivotChart with Month on axis + Year as slicer.
-   - Visualized with a lines chart 
+   - Visualized with a lines chart
+   ![](Revenue.png) REVENUE
+   ![](Expense.png) EXPENSE
 
 7. **Transaction Analysis – Which accounts have the highest number of postings?** 
    - Used COUNTIFS by AccountName.  
@@ -69,7 +73,8 @@ The goal was to replicate real-world financial reporting by building:
   - Department Expense Breakdown (bar chart)  
   - Trial Balance Check (table balanced/unbalanced flag)
   - Income statement
-  - year, accountname & department slizers  
+  - year, accountname & department slizers
+  ![](Dashboard.png) DASHBOARD
 
 ---
 
