@@ -16,7 +16,7 @@ The goal was to replicate real-world financial reporting by building:
 ---
 
 ## 📂 Repository Structure
-
+ General-Ledger-FinancialAnalysis ┣ 📂 Data ┃ ┣ General-Ledger.xlsx       (raw data 2,000 rows) ┃ ┗ ExchangeRates         (lookup for currency conversion) ┣ 📂 Visuals ┃ ┣ ExchangeRate.png ┃ ┣ P/L ┃ ┣ Expense.png ┃ ┣ Revenue.png ┃ ┗ Dashboard.png ┗ README.md
 
 ---
 
@@ -42,7 +42,8 @@ The goal was to replicate real-world financial reporting by building:
    - Created an Exchange Rate table in Excel.  
    - Added NetAmountUSD column via Power Query merge.
    - Used INDEX MATCH to verify ``=INDEX(ExchangeRate[Rate2USD], MATCH(GL!L:L,ExchangeRate[Currency], 0))``  
-   - Compared results with and without conversion.  
+   - Compared results with and without conversion.
+   ![](ExchangeRate.png) EXCHANGERATE MERGE
 
 5. **Revenue/Expense Trend – How has Sales Revenue grown across months/years?**  
    - PivotChart with Month on axis + Year as slicer.
@@ -65,7 +66,7 @@ The goal was to replicate real-world financial reporting by building:
   - Formulas:  
     - SUMIFS, COUNTIFS → financial aggregation and grouping 
     - INDEX-MATCH, VLOOKUP → currency lookups  
-    - IF, IFS, TRIM, TODAY → data validation & cleaning  
+    - IF, IFS, TRIM, ``=Year([txndate]), =TEXT([txndate],mmm)`` → data validation & cleaning  
 
 - Visualization & Dashboarding  
   - KPI Cards: *Total Revenue, Total Expenses, Net Profit, Number of Posting*  
@@ -83,7 +84,7 @@ The goal was to replicate real-world financial reporting by building:
 - Ledger was out of balance by -816K USD (post conversion).  
 - Travel expense was the largest expense category across departments.  
 - Revenue trend analysis highlighted periods of growth/decline.  
-- Imbalance trial balance, both Debit & Credit were filled — indicating possible data entry issues.  
+- Imbalance trial balance, both Debit & Credit were filled, indicating possible data entry issues.  
 
 ---
 
